@@ -1,4 +1,5 @@
 var request = require("request");
+var rp = require('request-promise');
 var REST_DB_APIKEY = '85d572967adac78254a7f9cb0b42003caaf3b';
 
 module.exports = function(app) {
@@ -18,10 +19,10 @@ module.exports = function(app) {
                 json: true
             };
 
-            request(options, function(error, response, body) {
+            return rp(options).then(function(error, response, body) {
                 if (error) throw new Error(error);
 
-                res.say(body.message);
+                return res.say(body.message);
             });
         }
     );
