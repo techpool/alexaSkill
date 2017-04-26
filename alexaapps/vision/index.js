@@ -21,7 +21,7 @@ module.exports = function(app) {
             };
 
             return rp(options).then(function(error, response, body) {
-                if (error) throw new error;
+                if (error) throw error;
 
                 if (body.length == 0) {
                     res.say('Nothing has been captured by the camera yet');
