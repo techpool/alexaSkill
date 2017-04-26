@@ -21,9 +21,13 @@ module.exports = function(app) {
             };
 
             return rp(options).then(function(error, response, body) {
-                if (error) console.log(error);
-                console.log(body)
-                res.say(body.message);
+                if (error) throw new error;
+
+                if (body.length == 0) {
+                    res.say('Nothing has been captured by the camera yet');
+                } else {
+                    res.say(body[0].message);   
+                }
             }).catch(function(error) {
                 console.log(error);
             });
