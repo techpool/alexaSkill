@@ -1,6 +1,7 @@
 var request = require("request");
 var rp = require('request-promise');
-var REST_DB_APIKEY = '85d572967adac78254a7f9cb0b42003caaf3b';
+const REST_DB_APIKEY = '85d572967adac78254a7f9cb0b42003caaf3b';
+const REST_DB_URL = 'https://alexaskill-c6ca.restdb.io/rest/';
 
 module.exports = function(app) {
 
@@ -10,7 +11,7 @@ module.exports = function(app) {
         function(req, res) {
             var options = {
                 method: 'GET',
-                url: 'https://alexaskill-c6ca.restdb.io/rest/visionapi/',
+                url: REST_DB_URL + 'visionapi',
                 headers: {
                     'cache-control': 'no-cache',
                     'x-apikey': REST_DB_APIKEY,
