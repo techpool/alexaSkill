@@ -20,16 +20,18 @@ module.exports = function(app) {
                 json: true
             };
 
-            return rp(options).then(function(error, response, body) {
-                if (error) throw error;
+            return new Promise(function(resolve, reject) {
+                request(options, function(error, response, body) {
+                    if (error) throw error;
 
-                if (body.length == 0) {
-                    res.say('Nothing has been captured by the camera yet');
-                } else {
-                    res.say(body[0].message);   
-                }
-            }).catch(function(error) {
-                console.log(error);
+                    if (body.length == 0) {
+                        res.say('Nothing has been captured by the camera yet');
+                        resolve();
+                    } else {
+                        res.say(body[0].message);
+                        resolve();
+                    }
+                });
             });
         }
     );
