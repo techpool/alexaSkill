@@ -21,7 +21,7 @@ module.exports = function(app) {
             };
 
             return rp(options).then(function(error, response, body) {
-                if (error) throw new Error(error);
+                if (error) console.log(error);
                 console.log(body)
                 res.say(body.message);
             }).catch(function(error) {
