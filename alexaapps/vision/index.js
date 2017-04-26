@@ -22,8 +22,10 @@ module.exports = function(app) {
 
             return rp(options).then(function(error, response, body) {
                 if (error) throw new Error(error);
-
-                return res.say(body.message);
+                console.log(body)
+                res.say(body.message);
+            }).catch(function(error) {
+                console.log(error);
             });
         }
     );
