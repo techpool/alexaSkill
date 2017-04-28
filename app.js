@@ -14,6 +14,7 @@ var express_app = express();
 
 var app = new alexa.app("nodealexa");
 require('./alexaapps/vision/index.js')(app)
+require('./alexaapps/emotion/index.js')(app)
 
 // setup the alexa app and attach it to express before anything else 
 app.express({ expressApp: express_app });
